@@ -24,6 +24,7 @@ public class Principal {
             System.out.println("3 - Subtrair quantidade (Saída)");
             System.out.println("4 - Listar produtos");
             System.out.println("5 - Sair");
+            System.out.println("6 - Excluir produto");
             System.out.print("Escolha uma opção: ");
 
             int opcao = scanner.nextInt();
@@ -198,6 +199,52 @@ public class Principal {
                 System.out.println("Encerrando sistema...");
                 break;
             }
+
+            else if (opcao == 6) {
+
+            System.out.print("Digite o ID do produto: ");
+            int id = scanner.nextInt();
+
+            System.out.print("Tem certeza que quer excluir esse produto? (1 - Sim / 2 - Não): ");
+            int escolha = scanner.nextInt();
+
+            if (escolha == 1) {
+
+                String sql = "DELETE FROM estoque WHERE produto_id = ?";
+
+                try {
+                    Connection con = Conexao.conectar();
+                    PreparedStatement stmt = con.prepareStatement(sql);
+
+                    // Como só existe um ?, o índice é 1
+                    stmt.setInt(1, id);
+
+                    int linhas = stmt.executeUpdate();
+
+                    if (linhas > 0) {
+                        System.out.println("Produto excluído com sucesso!");
+                    } else {
+                        System.out.println("Produto não encontrado!");
+                    }
+
+                    stmt.close();
+                    con.close();
+
+                } catch (Exception e) {
+                    System.out.println("Erro ao excluir: " + e.getMessage());
+                }
+
+                continue;
+
+            } else if (escolha == 2) {
+                System.out.println("Exclusão cancelada.");
+                continue;
+            } else {
+                System.out.println("Escolha inválida!");
+                continue;
+            }
+        }
+
 
             // Caso digite algo inválido
             else {
