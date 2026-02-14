@@ -1,0 +1,33 @@
+<project> <!-- Define o projeto Maven -->
+
+    <modelVersion>4.0.0</modelVersion> <!-- Versão do modelo POM (estrutura padrão usada pelo Maven) -->
+
+    <groupId>com.loja</groupId> <!-- Identificador do grupo/empresa que está criando o projeto (normalmente no formato de domínio invertido) -->
+
+    <artifactId>estoque-simples</artifactId> <!-- Nome do projeto/artefato que será gerado (ex: nome do .jar) -->
+
+    <version>1.0</version> <!-- Versão atual do projeto -->
+
+    <properties> <!-- Seção para definir propriedades e configurações globais do projeto -->
+
+        <maven.compiler.source>17</maven.compiler.source> <!-- Define a versão do Java usada para escrever o código-fonte -->
+
+        <maven.compiler.target>17</maven.compiler.target> <!-- Define a versão do Java compatível para geração do bytecode -->
+
+    </properties>
+
+    <dependencies> <!-- Seção onde são adicionadas as bibliotecas externas necessárias para o projeto -->
+
+        <dependency> <!-- Define uma dependência específica -->
+
+            <groupId>mysql</groupId> <!-- Grupo responsável pela biblioteca (neste caso, MySQL) -->
+
+            <artifactId>mysql-connector-java</artifactId> <!-- Nome da biblioteca usada para conectar Java ao banco MySQL -->
+
+            <version>8.0.33</version> <!-- Versão específica da biblioteca que será utilizada -->
+
+        </dependency>
+
+    </dependencies>
+
+</project> <!-- Finaliza a definição do projeto -->
